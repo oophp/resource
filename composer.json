@@ -1,0 +1,20 @@
+{
+    "name": "oophp/resource",
+    "description": "Object Oriented PHP Resources",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yehuda Deutsch",
+            "email": "yeh@uda.co.il"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OOPHP\\Resource\\": "src/",
+            "Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.0.0"
+    }
+}
