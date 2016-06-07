@@ -7,43 +7,14 @@ use OOPHP\Resource\File\Resource;
 
 class Zlib extends Resource
 {
-    public function open($source, string $mode, bool $useIncludePath = false, $context = null)
+    public function open(string $path, string $mode = 'r', bool $useIncludePath = null, $context = null)
     {
         if (isset($this->resource)) {
             throw new ResourceAlreadySetException();
         }
 
-        $this->filePath = $source;
-        $this->resource = gzopen($source, $mode, $useIncludePath);
+        $path = 'compress.zlib://'.$path;
 
-        return $this;
-    }
-
-    public function read(int $length)
-    {
-        return gzread($this->resource, $length);
-    }
-
-    public function rewind()
-    {
-        return gzrewind($this->resource);
-    }
-
-    public function seek(int $offset, int $whence = SEEK_SET)
-    {
-        return gzseek($this->resource, $offset, $whence);
-    }
-
-    public function write(string $string, int $length = null)
-    {
-        return gzwrite($this->resource, $string, $length);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function close()
-    {
-        return gzclose($this->resource);
+        return parent::open($path, $mode, $useIncludePath, $context);
     }
 }
